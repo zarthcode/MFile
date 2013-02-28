@@ -19,7 +19,11 @@ Recipe
 
 Vim and AVR-GCC.  For now, I'm (in vim) copying most of <avr/io.h> directly into the xmem.c, and then including every single device file, and collecting every single device tag (using some #undefs to keep the compile going).  
 
-Build xmem.c, piping stderr into a file.  (It's not meant to build successfully.)
+Build xmem.c, piping stderr into a file.  (Failure is success!)
+```
+avr-gcc -c xmem.c 2> output.txt
+```
+*Note that the 2 is important!*
 
 Once that's done, some macros are executed in vim to remove the noise, leaving only #pragma messages, and #warnings (unsupported devices).  Allowing a scrape of every supported device, and their external memory starting address, if there is one.
 
