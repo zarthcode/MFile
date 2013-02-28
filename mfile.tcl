@@ -530,7 +530,8 @@ proc makemfilemenu {} {
 	menu .f1.f1.mb2.m1.c1.atxmega -tearoff 0
 	menu .f1.f1.mb2.m1.c1.attiny -tearoff 0
 	menu .f1.f1.mb2.m1.c1.other -tearoff 0
-
+	set atmega_cnt 0
+	set atmega_clm 0
 	foreach m $devicelist {
 	    set mcu [lindex $m 0]
 	    if {[llength $mcu] > 1} {
@@ -542,9 +543,36 @@ proc makemfilemenu {} {
 			-label $mcu -command setmcu
 		}
 		"atmega*" {
+			set atmega_cnt [expr {$atmega_cnt + 1}]
+			if {$atmega_cnt > 15} {
+				set atmega_cnt 0
+				set atmega_clm 1
+			}
 		    .f1.f1.mb2.m1.c1.atmega add radiobutton -variable mcutype \
-			-label $mcu -command setmcu
+			-label $mcu -command setmcu -columnbreak $atmega_clm
+			set atmega_clm 0
+			
 		}
+		#"atmega2*" {
+		    #.f1.f1.mb2.m1.c1.atmega add radiobutton -variable mcutype \
+			#-label $mcu -command setmcu
+		#}
+		#"atmega3*" {
+		    #.f1.f1.mb2.m1.c1.atmega2 add radiobutton -variable mcutype \
+			#-label $mcu -command setmcu
+		#}
+		#"atmega4*" {
+		    #.f1.f1.mb2.m1.c1.atmega2 add radiobutton -variable mcutype \
+			#-label $mcu -command setmcu
+		#}
+		#"atmega6*" {
+		    #.f1.f1.mb2.m1.c1.atmega3 add radiobutton -variable mcutype \
+			#-label $mcu -command setmcu
+		#}
+		#"atmega8*" {
+		    #.f1.f1.mb2.m1.c1.atmega3 add radiobutton -variable mcutype \
+			#-label $mcu -command setmcu
+		#}
 		"atxmega*" {
 		    .f1.f1.mb2.m1.c1.atxmega add radiobutton -variable mcutype \
 			-label $mcu -command setmcu
