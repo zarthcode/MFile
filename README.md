@@ -1,7 +1,7 @@
 MFile
 =========
 
-This is an update to the winAVR MFile meant to make my life with AVR on linux (and with AS6) a bit easier.  I will eventualy add some additional tools to facilitate:
+This is an update to the winAVR MFile meant to make my life with AVR on linux (and with AS6) a bit easier.  I will eventually add some additional tools to facilitate:
 
 - Creation of Makefiles using an existing AS6 project as a source.
 - Creation of AS6 .cproj files to facilitate debugging
