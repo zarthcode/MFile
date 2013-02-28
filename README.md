@@ -16,7 +16,7 @@ Version
 
 Recipe
 -----------
-
+Unless you're really good with your editor's macros, **and** you need a new device list, simply skip to Installation
 Vim and AVR-GCC.  For now, I'm (in vim) copying most of <avr/io.h> directly into the xmem.c, and then including every single device file, and collecting every single device tag (using some #undefs to keep the compile going).  
 
 Build xmem.c, piping stderr into a file.  (Failure is success!)
